@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
 	 * 
 	 * @return TRUE Devuelve verdadero si se inicializo correctamente
 	 */
-	public function init($ip='192.168.1.107',$puerto=9300){
+	public function init($ip='192.168.1.107',$puerto=9301){
 		$this->socket= new PHPWebSocket();	
 		
 		$this->socket->bind('message', 'wsOnMessage');
@@ -85,8 +85,6 @@ class Admin extends CI_Controller {
 
 				//si el mensaje vino de la plataforma
 				if($clientID==$this->plataformaID){
-
-					//obtengo la ultima orden escrita en la base de datos por el controlador
 					$ultima_orden = $this->controlador->get_last();
 					if(!is_null($ultima_orden)){
 						unset($ultima_orden['id']);
@@ -94,46 +92,24 @@ class Admin extends CI_Controller {
 						unset($ultima_orden['leido']);
 						//foreach ($this->socket->wsClients as $d => $c) {
 							//envio la ultima ultima orden a la plataforma
-							echo 'enviando datos del controlador';
+						//	echo json_encode($ultima_orden);
 							$this->socket->wsSend($clientID,json_encode($ultima_orden));
 						//}
 					}
-
-					$datos = array(
-						'leido'=>FALSE,
-						'fecha'=>microtime(true)
-					);
-					$datos = array_merge($datos,$msj);
-					//guardo los datos en la tabla plataforma
-					$this->plataforma->save($datos);
-
-					if($this->controladorID)
-						$this->socket->wsSend($this->controladorID,json_encode($msj));
 				}
 				//si el mensaje vino del controlador
 				if($clientID==$this->controladorID){
-					echo "msj from: controlador".$this->controladorID;
-					$datos = array(
-						'leido'=>FALSE,
-						'fecha'=>microtime(true)
-					);
-					$datos = array_merge($datos,$msj);
-					//guardo los datos en la tabla controlador
-					$this->controlador->save($datos);
-					if($this->plataformaID)
-						$this->socket->wsSend($this->plataformaID,json_encode($msj));
-					//obtengo la ultima posicion escfrita en la base de datos por la plataforma
-					/*$ultimo_comando = $this->plataforma->get_last();
+					$ultimo_comando = $this->plataforma->get_last();
 					if(!is_null($ultimo_comando)){
 						unset($ultimo_comando['id']);
 						unset($ultimo_comando['fecha']);
 						unset($ultimo_comando['leido']);
 						//foreach ($this->socket->wsClients as $d => $c) {
-							//echo json_encode($ultimo_comando);
+							echo json_encode($ultimo_comando);
 							//envio la ultima posicion de la plataforma al controlador
 							$this->socket->wsSend($clientID,json_encode($ultimo_comando));
 						//}
-					}*/
+					}
 				}
 			}
 		//	$this->socket->wsSend($clientID,json_encode($msj));

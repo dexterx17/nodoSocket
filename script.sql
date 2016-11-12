@@ -13,25 +13,25 @@ CREATE TABLE controlador
     leido BOOLEAN DEFAULT FALSE
 );
 
-INSERT INTO controlador(com,valorx,valory,valorz,errorx,errory,errorz,control)
-VALUES(0,0,0,0,0,0,0,0);
 
 CREATE TABLE plataforma
 (
-	id integer primary key auto_increment,
-	ok   DOUBLE PRECISION,
-	valorx   DOUBLE PRECISION,
-	valory   DOUBLE PRECISION,
-	teta   DOUBLE PRECISION,
-	q1   DOUBLE PRECISION,
-	q2   DOUBLE PRECISION,
-	q3   DOUBLE PRECISION,
-	q4   DOUBLE PRECISION,
-	ftang   DOUBLE PRECISION,
-	fnormal   DOUBLE PRECISION,
-	fecha  DOUBLE PRECISION,
+    id integer primary key auto_increment,
+    ok   DOUBLE PRECISION,
+    valorx   DOUBLE PRECISION,
+    valory   DOUBLE PRECISION,
+    teta   DOUBLE PRECISION,
+    q1   DOUBLE PRECISION,
+    q2   DOUBLE PRECISION,
+    q3   DOUBLE PRECISION,
+    q4   DOUBLE PRECISION,
+    ftang   DOUBLE PRECISION,
+    fnormal   DOUBLE PRECISION,
+    fecha  DOUBLE PRECISION,
     leido BOOLEAN DEFAULT FALSE
 );
 
+INSERT INTO controlador(com,valorx,valory,valorz,errorx,errory,errorz,control)
+VALUES(0,0,0,0,0,0,0,4);
 INSERT INTO plataforma(ok,valorx,valory,teta,q1,q2,q3,q4,ftang,fnormal)
 VALUES(0,0,0,0,0,0,0,0,0,0);

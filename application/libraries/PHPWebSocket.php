@@ -584,7 +584,7 @@ class PHPWebSocket
 				foreach ( $this->wsOnEvents['message'] as $func )
 					$this->socket->$func($clientID, $data, $dataLength, $opcode == self::WS_OPCODE_BINARY);
 				//
-				echo $data;
+			//	echo $data;
 			//	$this->socket->log($data);
 				//echo"Funcion wsProcessClientMessage 2";
 					
@@ -592,7 +592,7 @@ class PHPWebSocket
 		else {
 			// unknown opcode
 		//	$this->socket->log($data);
-			echo $data;
+		//	echo $data;
 			
 
 
