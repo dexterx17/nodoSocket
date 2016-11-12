@@ -1,0 +1,28 @@
+{
+  "name": "nodo",
+  "description": "Envio de datos por sockets",
+  "main": "index.js",
+  "authors": [
+    "Jaime Santana"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "sockets",
+    "balance",
+    "de",
+    "carga"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}

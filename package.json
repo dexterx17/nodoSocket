@@ -1,0 +1,17 @@
+{
+  "name": "nodo",
+  "version": "0.0.1",
+  "description": "Envio de datos por sockets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sockets",
+    "balance",
+    "de",
+    "carga"
+  ],
+  "author": "Jaime Santana",
+  "license": "MIT"
+}
