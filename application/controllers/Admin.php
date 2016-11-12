@@ -98,10 +98,11 @@ class Admin extends CI_Controller {
 						unset($ultima_orden['id']);
 						unset($ultima_orden['fecha']);
 						unset($ultima_orden['leido']);
-						foreach ($this->socket->wsClients as $d => $c) {
+						//foreach ($this->socket->wsClients as $d => $c) {
 							//envio la ultima ultima orden a la plataforma
-							$this->socket->wsSend($d,json_encode($ultima_orden));
-						}
+						//	echo json_encode($ultima_orden);
+							$this->socket->wsSend($clientID,json_encode($ultima_orden));
+						//}
 					}
 				}
 				//si el mensaje vino del controlador
@@ -120,14 +121,15 @@ class Admin extends CI_Controller {
 						unset($ultimo_comando['id']);
 						unset($ultimo_comando['fecha']);
 						unset($ultimo_comando['leido']);
-						foreach ($this->socket->wsClients as $d => $c) {
+						//foreach ($this->socket->wsClients as $d => $c) {
+							echo json_encode($ultimo_comando);
 							//envio la ultima posicion de la plataforma al controlador
-							$this->socket->wsSend($d,json_encode($ultimo_comando));
-						}
+							$this->socket->wsSend($clientID,json_encode($ultimo_comando));
+						//}
 					}
 				}
 			}
-			$this->socket->wsSend($clientID,json_encode($msj));
+		//	$this->socket->wsSend($clientID,json_encode($msj));
 	 	//	$this->socket->log("$ip ($clientID) se guardo");
 		//}
 		 
@@ -144,9 +146,10 @@ class Admin extends CI_Controller {
 		$ip = long2ip($this->socket->wsClients[$clientID][6]);
 		$this->socket->log("$ip ($clientID) has connected.");
 		//Send a join notice to everyone but the person who joined
-		foreach ($this->socket->wsClients as $id => $client)
+		/*foreach ($this->socket->wsClients as $id => $client)
 			if ($id != $clientID)
 				$this->socket->wsSend($id, json_encode(array('tipo'=>'conexion','clienteId'=>$clientID ,'ip'=>$ip)));
+		*/
 	}
 
 	/**
@@ -163,8 +166,8 @@ class Admin extends CI_Controller {
 		$this->socket->log("$ip ($clientID) has disconnected.");
  
 		//Send a user left notice to everyone in the room
-		foreach ($this->socket->wsClients as $id => $client)
-			$this->socket->wsSend($id, json_encode(array('tipo'=>'desconexion','cliente'=>$clientID ,'ip'=>$ip)));
+		//foreach ($this->socket->wsClients as $id => $client)
+		//	$this->socket->wsSend($id, json_encode(array('tipo'=>'desconexion','cliente'=>$clientID ,'ip'=>$ip)));
 	}
 
 }

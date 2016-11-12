@@ -1,36 +1,6 @@
 CREATE TABLE controlador
 ( 
 	id integer primary key auto_increment,
-	c1    DOUBLE PRECISION,
-    c2    DOUBLE PRECISION,
-    c3    DOUBLE PRECISION,
-    c4    DOUBLE PRECISION,
-    c5    DOUBLE PRECISION,
-    c6    DOUBLE PRECISION,
-    c7    DOUBLE PRECISION,
-    c8    DOUBLE PRECISION,
-    leido BOOLEAN DEFAULT FALSE,
-    fecha integer 
-);
-
-CREATE TABLE plataforma
-(
-	id integer primary key auto_increment,
-	p1    DOUBLE PRECISION,
-    p2    DOUBLE PRECISION,
-    p3    DOUBLE PRECISION,
-    p4    DOUBLE PRECISION,
-    p5    DOUBLE PRECISION,
-    p6    DOUBLE PRECISION,
-    p7    DOUBLE PRECISION,
-    p8    DOUBLE PRECISION,
-    p9    DOUBLE PRECISION,
-    leido    BOOLEAN DEFAULT FALSE
-);
-
-CREATE TABLE controlador
-( 
-	id integer primary key auto_increment,
 	com   DOUBLE PRECISION,
     valorx    DOUBLE PRECISION,
     valory    DOUBLE PRECISION,
@@ -42,6 +12,9 @@ CREATE TABLE controlador
     fecha  DOUBLE PRECISION,
     leido BOOLEAN DEFAULT FALSE
 );
+
+INSERT INTO controlador(com,valorx,valory,valorz,errorx,errory,errorz,control)
+VALUES(0,0,0,0,0,0,0,0);
 
 CREATE TABLE plataforma
 (
@@ -59,3 +32,6 @@ CREATE TABLE plataforma
 	fecha  DOUBLE PRECISION,
     leido BOOLEAN DEFAULT FALSE
 );
+
+INSERT INTO plataforma(ok,valorx,valory,teta,q1,q2,q3,q4,ftang,fnormal)
+VALUES(0,0,0,0,0,0,0,0,0,0);
