@@ -1,7 +1,7 @@
 var server;
 $(document).ready(function() {
     console.log('conectando...');
-    Server = new FancyWebSocket('ws://192.168.1.107:9300');
+    Server = new FancyWebSocket('ws://192.168.1.8:9300');
     //Let the user know we're connected
     Server.bind('open', function() {
         console.log("Connected.");
@@ -21,7 +21,7 @@ $(document).ready(function() {
     Server.bind('message', function(payload) {
         var res = jQuery.parseJSON(payload);
         console.log(res);
-        $('#plataforma_div').prepend(res);
+        $('#plataforma_div').prepend(payload);
     });
 
     Server.connect();
@@ -30,10 +30,20 @@ $(document).ready(function() {
 $(document).on('submit','.sender',function(e){
     e.preventDefault();
     var info = $('#valor').val();
-    Server.send('message',JSON.stringify(info));
+    Server.send('message',info);
 })
 $(document).on('submit','.sender2',function(e){
     e.preventDefault();
     var info = $('#valor2').val();
-    Server.send('message',JSON.stringify(info));
+    Server.send('message',info);
+})
+$(document).on('submit','.sender3',function(e){
+    e.preventDefault();
+    var info = $('#valor3').val();
+    Server.send('message',info);
+})
+$(document).on('submit','.sender4',function(e){
+    e.preventDefault();
+    var info = $('#valor4').val();
+    Server.send('message',info);
 })

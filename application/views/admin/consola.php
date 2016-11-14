@@ -21,6 +21,14 @@
 					</div>
 					<div class="panel-footer">
 						<?php print_r($control); ?>
+						<form class="sender">
+							<input type="text" name="valor" id="valor" value='{"cliente":"controlador"}' class="form-control">
+							<button type="submit" value="Enviar" class="form-control">Enviar</button>
+						</form>
+						<form class="sender2">
+							<textarea rows="2" name="valor" id="valor2"  class="form-control">{"com":"2","valorx":"24","valory":"35","valorz":"22","errorx":"34","errory":"35","errorz":"23","control":"23"}</textarea>
+							<button type="submit" value="Enviar" class="form-control">Enviar</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -34,18 +42,18 @@
 					</div>
 					<div class="panel-footer">
 						<?php print_r($plataforma); ?>
+						<form class="sender3">
+							<input type="text" name="valor" id="valor3" value='{"cliente":"plataforma"}' class="form-control">
+							<button type="submit" value="Enviar" class="form-control">Enviar</button>
+						</form>
+						<form class="sender4">
+							<textarea rows="2" name="valor" id="valor4"  class="form-control">{"ok":"2","valorx":"24","valory":"35","teta":"22","q1":"34","q2":"35","q3":"23","q4":"23","ftang":"4","fnormal":"34"}</textarea>
+							<button type="submit" value="Enviar" class="form-control">Enviar</button>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		<form class="sender">
-			<input type="text" name="valor" id="valor" value="{'cliente':'controlador'}" class="form-control">
-			<button type="submit" value="Enviar" class="form-control">Enviar</button>
-		</form>
-		<form class="sender2">
-			<input type="text" name="valor" id="valor2" value="{'com':'2','valorx':'24','valory':'35','valorz':'22','errorx':'34','errory':'35','errorz':'23','control':'23'}" class="form-control">
-			<button type="submit" value="Enviar" class="form-control">Enviar</button>
-		</form>
 	</div>
 </body>
 </html>

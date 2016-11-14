@@ -1,3 +1,8 @@
+CREATE DATABASE nodos;
+
+USE nodos;
+
+
 CREATE TABLE controlador
 ( 
 	id integer primary key auto_increment,

@@ -10,3 +10,6 @@ apt-get install mysql-server mysql-cliente (0112358)
 Instalacion de (composer)[https://getcomposer.org/download/]
 mv composer.phar /usr/local/bin/composer
 
+##Instalacion de entorno de produccion
+apt-get install apache2
+apt-get install php5 php5-mysql

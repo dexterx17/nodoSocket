@@ -1,5 +1,5 @@
 RewriteEngine on
-RewriteBase /nodo/
+RewriteBase /nodoSocket/
 RewriteCond $1 !^(index.php|css|js|fonts|images|robots.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
