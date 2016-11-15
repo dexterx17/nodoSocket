@@ -1,23 +1,23 @@
 #!/usr/bin/python
 import websocket
-import thread
+import _thread
 import time
 import random
 import json
 
 def on_message(ws, message):
-	print "MENSAJE RECIBIDO DESDE EL CONTROLADOR"
-	print message
+	print ("MENSAJE RECIBIDO DESDE EL CONTROLADOR")
+	print (message)
 
 def on_error(ws, error):
-    print error
+    print (error)
 
 def on_close(ws):
-    print "### closed ###"
+    print ("### closed ###")
 
 def on_open(ws):
     def run(*args):
-    	time.sleep(1)
+    	#time.sleep(1)
         ws.send('{"cliente":"plataforma"}')
         for i in range(100):
             #time.sleep(0.5)
@@ -34,15 +34,15 @@ def on_open(ws):
 				'fnormal':random.randint(0,100)
 				}
             ws.send(json.dumps(dato))
-            print "DATO ENVIADO DESDE PLATAFORMA CORRECTAMENTE!"
+            print ("DATO ENVIADO DESDE PLATAFORMA CORRECTAMENTE!")
         time.sleep(1)
         ws.close()
-        print "thread terminating..."
-    thread.start_new_thread(run, ())
+        print ("thread terminating...")
+    _thread.start_new_thread(run, ())
 
 
 if __name__ == "__main__":
-    websocket.enableTrace(True)
+    #websocket.enableTrace(True)
     ws = websocket.WebSocketApp("ws://192.168.1.8:9300",
                                 on_message = on_message,
                                 on_error = on_error,

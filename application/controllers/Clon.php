@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once('Async.php');
 /**
  * Permite administrar la conexion y los mensajes que se 
  * transmite a traves del Socket
@@ -31,6 +32,18 @@ class Clon extends CI_Controller {
 		$this->socket->bind('open', 'wsOnOpen');
 		$this->socket->bind('close', 'wsOnClose');     
 		return $this->socket->wsStartServer($ip,$puerto);
+	}
+
+	public function plataforma(){
+		$stack = array();
+
+		//Initiate Multiple Thread
+		foreach ( range("A", "D") as $i ) {
+			usleep(2000000);
+			$ultimo_comando = $this->plataforma->get_last();
+			print_r($ultimo_comando);
+			echo '<br>';
+		}
 	}
 
 	public function a(){
@@ -103,11 +116,11 @@ class Clon extends CI_Controller {
 			if($clientID==$this->plataformaID){
 
 				//obtengo la ultima orden escrita en la base de datos por el controlador
-				$ultima_orden = $this->controlador->get_last();
-				if(!is_null($ultima_orden)){
-					echo 'enviando datos del controlador';
-					$this->socket->wsSend($clientID,json_encode($ultima_orden));
-				}
+				//$ultima_orden = $this->controlador->get_last();
+				//if(!is_null($ultima_orden)){
+				//	echo 'enviando datos del controlador';
+				//	$this->socket->wsSend($clientID,json_encode($ultima_orden));
+				//}
 
 				$datos = array(
 					'leido'=>FALSE,
@@ -131,19 +144,19 @@ class Clon extends CI_Controller {
 				//guardo los datos en la tabla controlador
 				$this->controlador->save($datos);
 				echo "plataformaID: [".$this->plataformaID.'] ';
-				if($this->plataformaID){
-					echo "enviando mensaje a plataforma";
-					$this->socket->wsSend($this->plataformaID,json_encode($msj));
-				}
+				//if($this->plataformaID){
+				//	echo "enviando mensaje a plataforma";
+				//	$this->socket->wsSend($this->plataformaID,json_encode($msj));
+				//}
 				//obtengo la ultima posicion escfrita en la base de datos por la plataforma
-				$ultimo_comando = $this->plataforma->get_last();
-				if(!is_null($ultimo_comando)){
+				//$ultimo_comando = $this->plataforma->get_last();
+				//if(!is_null($ultimo_comando)){
 					//foreach ($this->socket->wsClients as $d => $c) {
 						//echo json_encode($ultimo_comando);
 						//envio la ultima posicion de la plataforma al controlador
-						$this->socket->wsSend($clientID,json_encode($ultimo_comando));
+				//		$this->socket->wsSend($clientID,json_encode($ultimo_comando));
 					//}
-				}
+				//}
 			}
 		//	$this->socket->wsSend($clientID,json_encode($msj));
 	 	//	$this->socket->log("$ip ($clientID) se guardo");

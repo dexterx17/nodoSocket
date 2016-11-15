@@ -33,10 +33,24 @@ class Admin extends CI_Controller {
 		return $this->socket->wsStartServer($ip,$puerto);
 	}
 
+	public function datos(){
+		$datos = $this->plataforma->get_all();
+		$resultado = count($datos).'<br>';
+
+		foreach ($datos as $key => $dato) {
+			foreach ($dato as $key2 => $value) {
+				$resultado.=$value.',';
+			}
+			$resultado=substr($resultado, 0,strlen($resultado)-1);
+			$resultado.='<br>';
+		}
+
+		echo $resultado;
+	}
+
 	public function client(){
 		$data['control'] = $this->controlador->get_last();
 		$data['plataforma'] = $this->plataforma->get_last();
-		
 		
 		$this->load->view('admin/consola',$data);
 	}
