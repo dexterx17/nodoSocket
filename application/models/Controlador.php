@@ -9,8 +9,6 @@ class Controlador extends CI_Model{
 	public function get_last(){
 		$this->db->select('com,valorx,valory,valorz,errorx,errory,errorz,control');
 		$dato = $this->db->limit(1)->order_by('id','desc')->get('controlador')->row_array();
-		echo "CONTROL";
-		print_r($dato);
 		return $dato;
 	}
 

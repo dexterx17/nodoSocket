@@ -9,8 +9,6 @@ class Plataforma extends CI_Model{
 	public function get_last(){
 		$this->db->select('ok,valorx,valory,teta,q1,q2,q3,q4,ftang,fnormal');
 		$dato = $this->db->limit(1)->order_by('id','desc')->get('plataforma')->row_array();
-		echo "PLATAFORMA";
-		print_r($dato);
 		return $dato;
 	}
 
