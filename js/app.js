@@ -21,7 +21,7 @@ $(document).ready(function() {
     Server.bind('message', function(payload) {
         var res = jQuery.parseJSON(payload);
         console.log(res);
-        $('#plataforma_div').prepend(payload);
+        $('#plataforma_div').html(payload);
     });
 
     Server.connect();
