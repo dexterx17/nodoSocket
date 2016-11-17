@@ -6,6 +6,38 @@ class Plataforma extends CI_Model{
 	/**
 	 * Devuelve todos los datos registrados de la plataforma
 	 */
+	public function get_all_new(){
+		$servername = "192.168.120.6";
+		$servername = "localhost";
+		$username = "root";
+		$password = "hunterhacker";
+		$password = "0112358";
+
+		$db = "nodos";
+		$db = "nodo";
+
+		// Create connection
+		$conn =  mysqli_connect($servername, $username, $password,$db);
+
+		// Check connection
+		if ($conn->connect_error) {
+		    die("Connection failed: " . $conn->connect_error);
+		}
+
+
+		$result = mysqli_query($conn,"SELECT ok,valorx,valory,teta,q1,q2,q3,q4,ftang,fnormal FROM plataforma order by id desc limit 1 ");
+		$new_array= array();
+		while ($row = mysqli_fetch_array($result)) {
+		//	print_r($row);
+		    $new_array[] = $row;
+		}
+		mysqli_close($conn);// close mysql then do other job with set_time_limit(59)
+		return $new_array;
+	}
+
+	/**
+	 * Devuelve todos los datos registrados de la plataforma
+	 */
 	public function get_all(){
 		$this->db->select('ok,valorx,valory,teta,q1,q2,q3,q4,ftang,fnormal');
 		return $this->db->limit(1)->order_by('id','desc')->get('plataforma')->result_array();

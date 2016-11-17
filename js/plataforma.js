@@ -5,12 +5,10 @@ $(document).ready(function() {
     //Let the user know we're connected
     Server.bind('open', function() {
         console.log("Connected.");
-        //  var mensaje = {'cliente':'php','ip':'192.168.1.106','datos':'05050','estado':'conexion','tiempo':'0.14'  };
-        /*var mensaje = {
-            'cliente': 'php'
+        var mensaje = {
+            'cliente': 'plataforma'
         };
         Server.send('message', JSON.stringify(mensaje));
-        */
     });
 
     Server.bind('close', function(data) {
@@ -27,22 +25,6 @@ $(document).ready(function() {
     Server.connect();
 });
 
-$(document).on('submit','.sender',function(e){
-    e.preventDefault();
-    var info = $('#valor').val();
-    Server.send('message',info);
-})
-$(document).on('submit','.sender2',function(e){
-    e.preventDefault();
-    var info = $('#valor2').val();
-    Server.send('message',info);
-})
-
-$(document).on('submit','.sender3',function(e){
-    e.preventDefault();
-    var info = $('#valor3').val();
-    Server.send('message',info);
-})
 $(document).on('submit','.sender4',function(e){
     e.preventDefault();
     var info = $('#valor4').val();
